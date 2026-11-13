@@ -1,107 +1,37 @@
-
 # College Intelligence SLM
-### Small Language Model for College Information Question Answering
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![Model](https://img.shields.io/badge/Model-FLAN--T5--Small-orange)
-![Framework](https://img.shields.io/badge/Framework-PyTorch-red)
-![Platform](https://img.shields.io/badge/Platform-HuggingFace-yellow)
+A small language-model project for answering questions about college and program information. The accompanying Google Colab notebook fine-tunes `google/flan-t5-small` on question-answer examples prepared from a college-program JSON dataset, evaluates it on a held-out test split, and builds a semantic-retrieval-assisted question-answering function.
 
-## 1. Introduction
+## Repository contents
 
-College Intelligence SLM is an AI-powered
-question-answering system developed to provide
-college-related information using a fine-tuned
-Small Language Model.
+- `College_Data_Intelligence_SLM_HuggingFace.ipynb` — primary, step-by-step Google Colab notebook.
+- `college_intelligence_slm.py` — exported code cells from the notebook for source-code browsing. The notebook is the recommended way to run the workflow.
+- `requirements.txt` — Python dependencies used by the notebook.
+- `College_Intelligence_SLM_Project_Report.pdf` — project report (if included in this repository).
 
-The project uses FLAN-T5-small to generate
-context-based answers from educational data.
+## Run the project
 
-## 2. Objectives
+1. Open the `.ipynb` notebook in Google Colab.
+2. Select a GPU runtime if available (`Runtime` → `Change runtime type` → `T4 GPU`, when offered).
+3. Run the setup cell to install the dependencies.
+4. Upload the college-program JSON dataset when prompted. The notebook expects a JSON list of records and uses the fields available in that dataset.
+5. Run the notebook cells in order: data inspection and preparation, question-answer generation, institution-grouped train/validation/test split, tokenization, FLAN-T5-small fine-tuning, held-out evaluation, model saving, semantic retrieval, and chatbot testing.
+6. The Hugging Face Hub publishing section is optional. Use a Hugging Face write token stored securely in Colab Secrets; never paste a token into a notebook or commit it to GitHub.
 
-- Develop a Small Language Model.
-- Prepare and clean educational datasets.
-- Generate question-answer training examples.
-- Fine-tune a pretrained language model.
-- Evaluate model performance.
-- Develop an interactive chatbot.
-- Publish the trained model on Hugging Face.
+## Dataset and model files
 
-## 3. Technologies Used
+The dataset is not bundled here. Upload the dataset separately in Colab, and only publish it to GitHub if you have permission to share it and it contains no private or restricted information. Trained model weights are large; keep them in Hugging Face Hub or another model-artifact store rather than committing them to this source repository.
 
-- Python
-- Google Colab
-- PyTorch
-- Hugging Face Transformers
-- Pandas
-- Scikit-learn
-- Gradio
+## Evaluation
 
-## 4. Dataset Information
+Run the notebook to generate the actual evaluation metrics for your dataset and training run. Report the values produced by your own run; do not treat example screenshots or placeholder values as guaranteed results.
 
-- Original records: 999
-- QA examples: 7,282
-- Training: 5,786
-- Validation: 416
-- Testing: 1,080
+## Security
 
-## 5. Model Configuration
+- Do not commit Hugging Face access tokens, API keys, credentials, or Colab secret values.
+- Do not commit private datasets or personally identifiable information.
+- Keep large model checkpoints out of Git history.
 
-- Base model: google/flan-t5-small
-- Epochs: 3
-- Batch size: 4
-- Learning rate: 0.00005
-- GPU: NVIDIA Tesla T4
+## License
 
-## 6. Evaluation Results
-
-- Exact Match Accuracy: 100%
-- Average Token F1: 100%
-
-These results represent the prepared held-out
-test dataset and should not be interpreted as
-general-purpose accuracy.
-
-## 7. Project Structure
-
-- notebooks/
-- reports/
-- screenshots/
-- dataset/
-- README.md
-- requirements.txt
-- .gitignore
-
-## 8. Hugging Face Model
-
-https://huggingface.co/sree02200/college-intelligence-slm
-
-## 9. Features
-
-- College information question answering
-- Context-based answer generation
-- Fine-tuned SLM
-- Interactive chatbot
-- Hugging Face deployment
-
-## 10. Future Enhancements
-
-- Improve information retrieval.
-- Add more educational datasets.
-- Handle ambiguous questions.
-- Improve answer accuracy on unseen questions.
-- Deploy the chatbot as a web application.
-
-## 11. Conclusion
-
-This project demonstrates how Small Language
-Models can be used to develop educational
-question-answering systems.
-
-It combines dataset preparation, model
-fine-tuning, evaluation and deployment.
-
-## 12. Project Author
-
-CSE AIML Academic Project
-
+Add the license required by your course or project supervisor before distributing this repository.
